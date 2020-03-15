@@ -5,7 +5,7 @@
             <div id="content">
                 <page-header></page-header>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-1">Create QR</h3>
+                    <h3 class="text-dark mb-1">Create payment</h3>
                 </div>
                 <div class="container col-xl-6 col-lg-8 col-md-10">
                     <form id="contactForm" method="get">
@@ -46,7 +46,7 @@
                 </div>
             </footer>
         </div>
-        </div>
+    </div>
 </template>
 
 <script>
