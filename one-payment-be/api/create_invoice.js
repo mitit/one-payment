@@ -1,25 +1,32 @@
-const fs = require('fs');
-const path = require('path');
+const qrCode = require('qrcode');
+const {createInvoice} = require('./database.service');
 
 module.exports = async function (req, res, next) {
     const body = req.body || {};
-    const file1 = path.resolve('./example-888.png');
+    const data = {
+        uid: req.uid,
+        amount: body.amount || 0,
+        isAmountOptional: body.hasOwnProperty('isAmountOptional') ? body.isAmountOptional : false,
+        comment: body.comment || ''
+    };
 
-    console.log(body);
-    res.status(200).json([
-        {
-            id: 888,
-            amount: body.amount || 0,
-            isAmountOptional: body.isAmountOptional || false,
-            comment: body.comment || '',
-            url: 'https://example.com/888',
-            qr: base64_encode(file1)
-        },
-    ]);
+    const invoice = await createInvoice(data);
+    invoice.id = invoice._id;
+    invoice.url = `https://example.com/${invoice.id}`;
+    invoice.qr = await generateQr(invoice.url);
+    delete invoice._id;
+
+    res.status(200).json(invoice);
 };
 
-function base64_encode(file) {
-    const bitmap = fs.readFileSync(file);
-    const base64 = new Buffer(bitmap).toString('base64');
-    return `data:image/png;base64,${base64}`;
+async function generateQr(url) {
+    return new Promise((resolve, reject) => {
+        qrCode.toDataURL(url, (err, url) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(url);
+            }
+        })
+    });
 }
