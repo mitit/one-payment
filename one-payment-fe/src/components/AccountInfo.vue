@@ -168,9 +168,7 @@
                                                                                data-toggle="dropdown"
                                                                                aria-expanded="false"
                                                                                href="#"><span
-                                            class="d-none d-lg-inline mr-2 text-gray-600 small">Account name</span><img
-                                            class="border rounded-circle img-profile"
-                                            src="assets/img/avatars/avatar1.jpeg"></a>
+                                            class="d-lg-inline mr-2 text-gray-600 small">Account name</span></a>
                                         <div
                                                 class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
                                                 role="menu"><a class="dropdown-item" role="presentation" href="#"><i
@@ -193,7 +191,7 @@
                     <div class="container-fluid">
                         <h3 class="text-dark mb-4">Profile</h3>
                         <div class="row mb-3">
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 offset-lg-2">
                                 <div class="row mb-3 d-none">
                                     <div class="col">
                                         <div class="card text-white bg-primary shadow">
@@ -234,21 +232,11 @@
                                             </div>
                                             <div class="card-body">
                                                 <form>
-                                                    <div class="form-row">
-                                                        <div class="col">
-                                                            <div class="form-group"><label
-                                                            ><strong>Username</strong></label><input
-                                                                    class="form-control" type="text"
-                                                                    placeholder="user.name"
-                                                                    name="username"></div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="form-group"><label
-                                                            ><strong>Email</strong></label><input
-                                                                    class="form-control" type="email"
-                                                                    placeholder="user@example.com" name="email"></div>
-                                                        </div>
-                                                    </div>
+                                                     <div class="form-group"><label
+                                                    ><strong>Email</strong></label><input
+                                                            class="form-control" type="email"
+                                                            placeholder="user@example.com"
+                                                            name="email"></div>
                                                     <div class="form-row">
                                                         <div class="col">
                                                             <div class="form-group"><label><strong>First
@@ -273,12 +261,39 @@
                                                 </form>
                                             </div>
                                         </div>
+                                        <div class="card shadow mb-3">
+                                            <div class="card-header py-3">
+                                                <p class="text-primary m-0 font-weight-bold">Password settings</p>
+                                            </div>
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="form-row">
+                                                        <div class="col">
+                                                            <div class="form-group"><label
+                                                            ><strong>New password</strong></label><input
+                                                                    class="form-control" type="password"
+                                                                    name="newPassword"></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group"><label
+                                                            ><strong>Repeat password</strong></label><input
+                                                                    class="form-control" type="password"
+                                                                    name="repeatPassword"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-primary btn-sm" type="submit">Apply new password
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                         <div class="card shadow mb-4">
                                             <div class="card-header py-3">
                                                 <h6 class="text-primary m-0 font-weight-bold">Your IBANs</h6>
                                             </div>
                                             <div class="card-body">
-                                                <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                                <div class="container table-responsive mt-2" id="dataTable" role="grid"
                                                      aria-describedby="dataTable_info">
                                                     <table class="table dataTable my-0" id="dataTable1">
                                                         <thead>
@@ -292,43 +307,33 @@
                                                         <tr>
                                                             <td>CH93 0076 2011 6238 5295 7</td>
                                                             <td>2008/11/28</td>
-                                                            <td><a class="btn btn-danger btn-icon-split" role="button"
+                                                            <td><a class="btn btn-danger" role="button"
                                                                    style="margin: 5px;"><span
                                                                     class="text-white-50 icon"><i
-                                                                    class="fas fa-minus"></i></span><span
-                                                                    class="text-white text">Delete</span></a></td>
+                                                                    class="fas fa-minus"></i></span></a></td>
                                                         </tr>
                                                         <tr>
                                                             <td>CH93 0076 2011 6238 5295 7</td>
                                                             <td>2009/10/09<br/></td>
-                                                            <td><a class="btn btn-danger btn-icon-split" role="button"
+                                                            <td><a class="btn btn-danger" role="button"
                                                                    style="margin: 5px;"><span
                                                                     class="text-white-50 icon"><i
-                                                                    class="fas fa-minus"></i></span><span
-                                                                    class="text-white text">Delete</span></a></td>
+                                                                    class="fas fa-minus"></i></span></a></td>
                                                         </tr>
                                                         <tr>
                                                             <td>CH93 0076 2011 6238 5295 7</td>
                                                             <td>2009/01/12<br/></td>
-                                                            <td><a class="btn btn-danger btn-icon-split" role="button"
+                                                            <td><a class="btn btn-danger" role="button"
                                                                    style="margin: 5px;"><span
                                                                     class="text-white-50 icon"><i
-                                                                    class="fas fa-minus"></i></span><span
-                                                                    class="text-white text">Delete</span></a></td>
+                                                                    class="fas fa-minus"></i></span></a></td>
                                                         </tr>
                                                         </tbody>
-                                                        <tfoot>
-                                                        <tr>
-                                                            <td><strong>IBAN</strong></td>
-                                                            <td><strong>Date added</strong></td>
-                                                            <td><strong>Options</strong></td>
-                                                        </tr>
-                                                        </tfoot>
                                                     </table>
-                                                    <hr>
-                                                    <form class="d-flex justify-content-left">
+                                                    <form class="form-inline">
                                                         <div class="form-group p-2"><input class="form-control"
-                                                                                           name="addIban"></input></div>
+                                                                                           name="addIban">
+                                                                                           </div>
                                                         <div class="form-group p-2">
                                                             <button class="btn btn-primary btn-sm" type="submit">Add
                                                                 IBAN
