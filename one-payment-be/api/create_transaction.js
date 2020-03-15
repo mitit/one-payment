@@ -25,7 +25,7 @@ module.exports = async function (req, res, next) {
         invoiceId,
         payerId: req.uid,
         payeeId: invoice.uid,
-        amount: invoice.isAmountOptional ? body.amount : invoice.amount,
+        amount: invoice.isAmountOptional ? body.amount : parseFloat(invoice.amount),
         ts: new Date().getTime()
     };
 
