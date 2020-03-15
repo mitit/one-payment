@@ -5,36 +5,16 @@
             <div class="d-flex flex-column" id="content-wrapper">
                 <div id="content">
                     <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                        <div class="container-fluid">
-                            <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop"
-                                    type="button"><i class="fas fa-bars"></i></button>
-                            <ul class="nav navbar-nav flex-nowrap ml-auto">
-                                <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
-                                                                                    data-toggle="dropdown"
-                                                                                    aria-expanded="false" href="#"></a>
-                                    <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu"
-                                         aria-labelledby="searchDropdown">
-                                        <form class="form-inline mr-auto navbar-search w-100">
-                                            <div class="input-group"><input class="bg-light form-control border-0 small"
-                                                                            type="text" placeholder="Search for ...">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-primary py-0" type="button"><i
-                                                            class="fas fa-search"></i></button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                                <li class="nav-item no-arrow mx-1" role="presentation">
-                                    <div class="nav-item no-arrow"><a class="nav-link" aria-expanded="false"
-                                                                      href="settings"><i class="material-icons fa-fw">settings</i></a>
-
-                                    </div>
-                                    <div class="shadow dropdown-list dropdown-menu dropdown-menu-right"
-                                         aria-labelledby="alertsDropdown"></div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item no-arrow mx-1" role="presentation">
+                                <div class="nav-item no-arrow"><a class="nav-link" aria-expanded="false" href="settings"><i class="material-icons fa-fw">settings</i></a>
+                                    
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                        </ul>
+                    </div>
                     </nav>
                     <div class="container-fluid">
                         <h3 class="text-dark mb-1">Hello, User Userovich</h3>
