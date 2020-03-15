@@ -1,21 +1,36 @@
-const fs = require('fs');
-const path = require('path');
+const qrCode = require('qrcode');
+const {getInvoiceById, getUserById} = require('./database.service');
 
 module.exports = async function (req, res, next) {
-    const file1 = path.resolve('./example-1.png');
+    const id = req.params.id;
+    if (!id) {
+        res.status(400).json({error: 'No id'});
+        return;
+    }
 
-    res.status(200).json({
-        id: 1,
-        amount: 100,
-        isAmountOptional: false,
-        comment: 'test 1',
-        url: 'https://example.com/1',
-        qr: base64_encode(file1)
-    });
+    const invoice = await getInvoiceById(id);
+    if (!invoice) {
+        res.status(404).json({error: 'Invoice not found'});
+        return;
+    }
+    const store = await getUserById(invoice.uid);
+
+    invoice.url = `https://example.com/${invoice.id}`;
+    invoice.qr = await generateQr(invoice.url);
+    invoice.store = store;
+    delete invoice.uid;
+
+    res.status(200).json(invoice);
 };
 
-function base64_encode(file) {
-    const bitmap = fs.readFileSync(file);
-    const base64 = new Buffer(bitmap).toString('base64');
-    return `data:image/png;base64,${base64}`;
+async function generateQr(url) {
+    return new Promise((resolve, reject) => {
+        qrCode.toDataURL(url, (err, url) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(url);
+            }
+        })
+    });
 }

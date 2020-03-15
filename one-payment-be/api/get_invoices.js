@@ -7,6 +7,7 @@ module.exports = async function (req, res, next) {
         const item = invoices[i];
         item.url = `https://example.com/${item.id}`;
         item.qr = await generateQr(item.url);
+        delete item.uid;
     }
 
     res.status(200).json(invoices);

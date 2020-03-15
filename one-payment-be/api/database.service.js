@@ -59,6 +59,23 @@ async function createUser(data) {
     });
 }
 
+async function getUserById(id) {
+    return new Promise((resolve, reject) => {
+        users.find({_id: id}, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                result.forEach(item => {
+                    item.id = item._id;
+                    delete item._id;
+                });
+
+                resolve(result[0] || null);
+            }
+        });
+    });
+}
+
 async function createInvoice(data) {
     return new Promise((resolve, reject) => {
         invoices.insert(data, (err, newDoc) => {
@@ -75,16 +92,33 @@ async function createInvoice(data) {
 
 async function getInvoicesByUserId(uid) {
     return new Promise((resolve, reject) => {
-        invoices.find({uid: uid}, (err, invoices) => {
+        invoices.find({uid}, (err, result) => {
             if (err) {
                 reject(err);
             } else {
-                invoices.forEach(item => {
+                result.forEach(item => {
                     item.id = item._id;
                     delete item._id;
                 });
 
-                resolve(invoices);
+                resolve(result);
+            }
+        });
+    });
+}
+
+async function getInvoiceById(id) {
+    return new Promise((resolve, reject) => {
+        invoices.find({_id: id}, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                result.forEach(item => {
+                    item.id = item._id;
+                    delete item._id;
+                });
+
+                resolve(result[0] || null);
             }
         });
     });
@@ -94,5 +128,7 @@ module.exports = {
     init,
     createInvoice,
     getInvoicesByUserId,
-    createUser
+    getInvoiceById,
+    createUser,
+    getUserById
 };

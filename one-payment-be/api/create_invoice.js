@@ -13,6 +13,7 @@ module.exports = async function (req, res, next) {
     const invoice = await createInvoice(data);
     invoice.url = `https://example.com/${invoice.id}`;
     invoice.qr = await generateQr(invoice.url);
+    delete invoice.uid;
 
     res.status(200).json(invoice);
 };
