@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const databaseService = require('./api/database.service');
+const {init: initDatabase, getUserById} = require('./api/database.service');
 const app = express();
 const port = 4000;
 
@@ -17,7 +17,7 @@ const server = app
     .get('/public/invoice/:id', checkSession, require('./api/get_invoice_by_id'))
     .post('/public/invoice/:id/pay', checkSession, require('./api/create_transaction'));
 
-databaseService.init().then(() => {
+initDatabase().then(() => {
     server.listen(port, () => console.log(`App listening on port ${port}!`));
 }, err => {
     throw new Error(err);
@@ -29,13 +29,18 @@ async function checkSession(req, res, next) {
         return;
     }
 
-    const sid = req.headers.Authorization;
-    if (!sid) {
-        req.uid = 'EuFvHEGhsRcfSKIt';
-        console.log('NO AUTH HEADER!');
-        // res.status(401).json({error: 'INVALID_SID'});
-        // return;
+    const uid = req.headers.authorization;
+    if (!uid) {
+        res.status(401).json({error: 'Authorization header is required'});
+        return;
     }
 
+    const user = await getUserById(uid);
+    if (!user) {
+        res.status(401).json({error: 'Incorrect Authorization header'});
+        return;
+    }
+
+    req.uid = uid;
     next();
 }
