@@ -5,15 +5,16 @@ const port = 4000;
 
 app
     .use(bodyParser.json())
-    .use(checkSession)
     .all('*', (req, res, next) => {
         res.set('Access-Control-Allow-Origin', '*');
         res.set('Access-Control-Allow-Headers', '*');
         res.set('Access-Control-Allow-Methods', '*');
         next();
     })
-    .get('/invoices', require('./api/get_invoices'))
-    .post('/invoices', require('./api/create_invoice'))
+    .get('/invoices', checkSession, require('./api/get_invoices'))
+    .post('/invoices', checkSession, require('./api/create_invoice'))
+    .get('/public/invoice/:id', checkSession, require('./api/get_invoice_by_id'))
+    .post('/public/invoice/:id/pay', checkSession, require('./api/create_transaction'))
     .listen(port, () => console.log(`App listening on port ${port}!`));
 
 async function checkSession(req, res, next) {
