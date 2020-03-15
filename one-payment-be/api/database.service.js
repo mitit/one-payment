@@ -2,11 +2,13 @@ const path = require('path');
 const Datastore = require('nedb');
 const invoices = new Datastore({filename: path.resolve('./db/invoices.txt')});
 const users = new Datastore({filename: path.resolve('./db/users.txt')});
+const transactions = new Datastore({filename: path.resolve('./db/transactions.txt')});
 
 async function init() {
     await loadInvoices();
     await loadInvoicesIndexes();
     await loadUsers();
+    await loadTransactions();
     return true;
 }
 
@@ -37,6 +39,18 @@ function loadInvoicesIndexes() {
 async function loadUsers() {
     return new Promise((resolve, reject) => {
         users.loadDatabase(err => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
+async function loadTransactions() {
+    return new Promise((resolve, reject) => {
+        transactions.loadDatabase(err => {
             if (err) {
                 reject(err);
             } else {
@@ -124,11 +138,26 @@ async function getInvoiceById(id) {
     });
 }
 
+async function createTransaction(data) {
+    return new Promise((resolve, reject) => {
+        transactions.insert(data, (err, newDoc) => {
+            if (err) {
+                reject(err);
+            } else {
+                newDoc.id = newDoc._id;
+                delete newDoc._id;
+                resolve(newDoc);
+            }
+        });
+    });
+}
+
 module.exports = {
     init,
     createInvoice,
     getInvoicesByUserId,
     getInvoiceById,
     createUser,
-    getUserById
+    getUserById,
+    createTransaction
 };
