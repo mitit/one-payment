@@ -11,7 +11,7 @@
                 <li class="nav-item" role="presentation"><a class="nav-link"
                                                             @click="$router.push({name: 'CreatePayment'})"><i
                         class="fas fa-qrcode" style="font-size: 35px;"></i><span
-                        style="margin: 10px;">Create QR-code</span></a>
+                        style="margin: 10px;">Create payment</span></a>
                 </li>
                 <li class="nav-item" role="presentation"><a class="nav-link"
                                                             @click="$router.push({name: 'AccountInfo'})"><i

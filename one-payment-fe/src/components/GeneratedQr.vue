@@ -23,7 +23,7 @@
                                     <h6 class="m-0">Info</h6>
                                 </div>
                                 <div class="card-body">
-                                    <p class="m-0"><strong>Amount:</strong> 400000$ <strong>Purpouse:</strong> Pizza</p>
+                                    <p class="m-0"><strong>Amount:</strong> 35 € <br><strong>Purpouse:</strong> Roses 15st.</p>
                                 </div>
                             </div>
                         </div>
