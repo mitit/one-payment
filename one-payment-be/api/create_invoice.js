@@ -11,10 +11,8 @@ module.exports = async function (req, res, next) {
     };
 
     const invoice = await createInvoice(data);
-    invoice.id = invoice._id;
     invoice.url = `https://example.com/${invoice.id}`;
     invoice.qr = await generateQr(invoice.url);
-    delete invoice._id;
 
     res.status(200).json(invoice);
 };

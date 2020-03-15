@@ -65,21 +65,34 @@ async function createInvoice(data) {
             if (err) {
                 reject(err);
             } else {
+                newDoc.id = newDoc._id;
+                delete newDoc._id;
                 resolve(newDoc);
             }
         });
     });
 }
 
-function getUserInvoices(uid) {
-    invoices.find({uid: 'solar'}, function (err, docs) {
-        // docs is an array containing documents Mars, Earth, Jupiter
-        // If no document is found, docs is equal to []
+async function getInvoicesByUserId(uid) {
+    return new Promise((resolve, reject) => {
+        invoices.find({uid: uid}, (err, invoices) => {
+            if (err) {
+                reject(err);
+            } else {
+                invoices.forEach(item => {
+                    item.id = item._id;
+                    delete item._id;
+                });
+
+                resolve(invoices);
+            }
+        });
     });
 }
 
 module.exports = {
     init,
     createInvoice,
+    getInvoicesByUserId,
     createUser
 };
