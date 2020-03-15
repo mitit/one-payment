@@ -1,28 +1,20 @@
 <template>
     <div id="app">
-        <img alt="Vue logo" src="./assets/logo.png">
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <router-view/>
     </div>
 </template>
 
 <script>
-  import HelloWorld from './components/HelloWorld.vue'
-
-  export default {
-    name: 'App',
-    components: {
-      HelloWorld
+    export default {
+        name: 'App'
     }
-  }
 </script>
 
-<style>
-    #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
-</style>
+<style src="./components/assets/bootstrap/css/bootstrap.min.css"></style>
+<!--<style src="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"></style>-->
+<style src="./components/assets/fonts/fontawesome-all.min.css"></style>
+<style src="./components/assets/fonts/font-awesome.min.css"></style>
+<style src="./components/assets/fonts/line-awesome.min.css"></style>
+<style src="./components/assets/fonts/fontawesome5-overrides.min.css"></style>
+<style src="./components/assets/css/CanitoFormularioCompra2.css"></style>
+<style src="./components/assets/css/styles.css"></style>
