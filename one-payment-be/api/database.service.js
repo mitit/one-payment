@@ -111,6 +111,7 @@ async function createInvoice(data) {
                 reject(err);
             } else {
                 newDoc.id = newDoc._id;
+                newDoc.amount = newDoc.amount.toFixed(2);
                 delete newDoc._id;
                 resolve(newDoc);
             }
@@ -126,6 +127,7 @@ async function getInvoicesByUserId(uid) {
             } else {
                 result.forEach(item => {
                     item.id = item._id;
+                    item.amount = item.amount.toFixed(2);
                     delete item._id;
                 });
 
@@ -140,13 +142,14 @@ async function getInvoiceById(id) {
         invoices.find({_id: id}, (err, result) => {
             if (err) {
                 reject(err);
+            } else if (!result.length) {
+                resolve(null);
             } else {
-                result.forEach(item => {
-                    item.id = item._id;
-                    delete item._id;
-                });
-
-                resolve(result[0] || null);
+                const item = result[0];
+                item.id = item._id;
+                item.amount = item.amount.toFixed(2);
+                delete item._id;
+                resolve(item);
             }
         });
     });
@@ -159,8 +162,29 @@ async function createTransaction(data) {
                 reject(err);
             } else {
                 newDoc.id = newDoc._id;
+                newDoc.amount = newDoc.amount.toFixed(2);
                 delete newDoc._id;
                 resolve(newDoc);
+            }
+        });
+    });
+}
+
+async function getTransactions(filter) {
+    return new Promise((resolve, reject) => {
+        transactions.find(filter, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                result.forEach(item => {
+                    item.id = item._id;
+                    item.created = new Date(item.ts).toISOString();
+                    item.amount = item.amount.toFixed(2);
+                    delete item._id;
+                    delete item.ts;
+                });
+
+                resolve(result);
             }
         });
     });
@@ -174,6 +198,7 @@ async function getBankAccountsByUserId(uid) {
             } else {
                 result.forEach(item => {
                     item.id = item._id;
+                    item.balance = item.balance.toFixed(2);
                     delete item._id;
                 });
 
@@ -190,6 +215,7 @@ async function createBankAccount(data) {
                 reject(err);
             } else {
                 newDoc.id = newDoc._id;
+                newDoc.balance = newDoc.balance.toFixed(2);
                 delete newDoc._id;
                 resolve(newDoc);
             }
@@ -205,6 +231,7 @@ module.exports = {
     createUser,
     getUserById,
     createTransaction,
+    getTransactions,
     getBankAccountsByUserId,
     createBankAccount
 };

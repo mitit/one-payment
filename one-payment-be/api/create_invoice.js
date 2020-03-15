@@ -5,7 +5,7 @@ module.exports = async function (req, res, next) {
     const body = req.body || {};
     const data = {
         uid: req.uid,
-        amount: body.amount || 0,
+        amount: parseFloat(body.amount) || 0,
         isAmountOptional: body.hasOwnProperty('isAmountOptional') ? body.isAmountOptional : false,
         comment: body.comment || ''
     };

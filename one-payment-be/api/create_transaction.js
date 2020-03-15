@@ -23,7 +23,9 @@ module.exports = async function (req, res, next) {
     const data = {
         invoiceId,
         payerId: req.uid,
+        payeeId: invoice.uid,
         amount: invoice.isAmountOptional ? body.amount : invoice.amount,
+        ts: new Date().getTime()
     };
 
     const transaction = await createTransaction(data);
