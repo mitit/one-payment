@@ -1,12 +1,11 @@
 <template>
     <div id="wrapper">
-        <left-menu-bar></left-menu-bar>
+        <left-menu-bar/>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid">
-                        <button
-                                class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button">
+                        <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button">
                             <i class="fas fa-bars"></i></button>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
                             <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
@@ -150,42 +149,29 @@
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-1">Create QR</h3>
+                    <h3 class="text-dark mb-1">Generated QR-code</h3>
                 </div>
-                <div class="container">
-                    <form id="contactForm" method="get">
-                        <div class="form-row text-left" style="padding: 0px;">
-                            <div class="col-md-12 offset-lg-0 offset-xl-0" id="message">
-                                <div class="form-group has-feedback"><label for="from_name" style="font-size: 20px;">IBAN</label><select
-                                        class="form-control d-lg-flex align-items-lg-end"
-                                        style="font-size: 20px;padding: 11px;margin: 0px;height: 47px;">
-                                    <option value="">Chillán</option>
-                                    <optgroup label="Chillán Viejo"></optgroup>
-                                </select></div>
-                                <div
-                                        class="form-group has-feedback"><label for="from_name" style="font-size: 20px;">Purpose
-                                    of payment</label><input class="form-control" type="text" id="from_name"
-                                                             tabindex="-1" name="from_name" required=""
-                                                             style="font-size: 21px;height: 45.5px;"></div>
-                                <div
-                                        class="form-group has-feedback"><label
-                                        style="font-size: 20px;filter: brightness(0%);">Amount</label><input
-                                        class="form-control" type="tel" style="font-size: 21px;"></div>
-                                <div class="form-group"><label for="comments"
-                                                               style="font-size: 20px;">Comment</label><textarea
-                                        class="form-control" id="comments" name="Comments" rows="5"></textarea></div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-block"
-                                            @click="$router.push({name: 'GeneratedQr'})" type="submit">Generate QR-code&nbsp;<i
-                                            class="fa fa-qrcode"></i>&nbsp;
-                                    </button>
-                                    <button class="btn btn-primary btn-block" type="submit">Generate link&nbsp;<i
-                                            class="fa fa-link"></i></button>
+                <div class="row justify-content-center">
+                    <div class="m-10 col-xl-4 col-lg-5 col-md-6 col-sm-6"><img class="w-100"
+                                                                               src="../img/QR_code_for_mobile_English_Wikipedia.svg.png">
+                        <div class="d-flex justify-content-center p-1"><a class="btn btn-success btn-icon-split"
+                                                                          role="button" style="margin: 5px;"><span
+                                class="text-white-50 icon"><i class="fas fa-print"></i></span><span
+                                class="text-white text">Print</span></a><a class="btn btn-success btn-icon-split"
+                                                                           role="button" style="margin: 5px;"><span
+                                class="text-white-50 icon"><i class="fas fa-print"></i></span><span
+                                class="text-white text">Download</span></a></div>
+                        <div class="row d-flex justify-content-center m-3">
+                            <div class="card mb-4 border-left-success">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0">Info</h6>
                                 </div>
-                                <hr>
+                                <div class="card-body">
+                                    <p class="m-0"><strong>Amount:</strong> 400000$ <strong>Purpouse:</strong> Pizza</p>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <footer class="bg-white sticky-footer">
@@ -201,7 +187,7 @@
   import LeftMenuBar from '@/components/LeftMenuBar';
 
   export default {
-    name: 'CreatePayment',
+    name: 'GeneratedQr',
 
     components: {
       LeftMenuBar

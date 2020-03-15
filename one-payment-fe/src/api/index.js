@@ -19,6 +19,11 @@ const config = (params) => {
     }
   };
 
+  let token = store.getters['auth/token'];
+  if (token) {
+    Object.assign(config.headers, {Authorization: token});
+  }
+
   if (params) {
     Object.assign(config, {params: params})
   }
