@@ -172,18 +172,19 @@ async function createTransaction(data) {
 
 async function getTransactions(filter) {
     return new Promise((resolve, reject) => {
-        transactions.find(filter, (err, result) => {
+        transactions.find(filter, async (err, result) => {
             if (err) {
                 reject(err);
             } else {
-                result.forEach(item => {
+                for (let i = 0; i < result.length; ++i) {
+                    const item = result[i];
                     item.id = item._id;
                     item.created = new Date(item.ts).toISOString();
                     item.amount = item.amount.toFixed(2);
+                    item.invoice = await getInvoiceById(item.invoiceId);
                     delete item._id;
                     delete item.ts;
-                });
-
+                }
                 resolve(result);
             }
         });
