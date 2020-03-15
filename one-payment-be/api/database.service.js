@@ -3,12 +3,14 @@ const Datastore = require('nedb');
 const invoices = new Datastore({filename: path.resolve('./db/invoices.txt')});
 const users = new Datastore({filename: path.resolve('./db/users.txt')});
 const transactions = new Datastore({filename: path.resolve('./db/transactions.txt')});
+const accounts = new Datastore({filename: path.resolve('./db/accounts.txt')});
 
 async function init() {
     await loadInvoices();
     await loadInvoicesIndexes();
     await loadUsers();
     await loadTransactions();
+    await loadAccounts();
     return true;
 }
 
@@ -51,6 +53,18 @@ async function loadUsers() {
 async function loadTransactions() {
     return new Promise((resolve, reject) => {
         transactions.loadDatabase(err => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
+async function loadAccounts() {
+    return new Promise((resolve, reject) => {
+        accounts.loadDatabase(err => {
             if (err) {
                 reject(err);
             } else {
@@ -152,6 +166,37 @@ async function createTransaction(data) {
     });
 }
 
+async function getBankAccountsByUserId(uid) {
+    return new Promise((resolve, reject) => {
+        accounts.find({uid}, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                result.forEach(item => {
+                    item.id = item._id;
+                    delete item._id;
+                });
+
+                resolve(result);
+            }
+        });
+    });
+}
+
+async function createBankAccount(data) {
+    return new Promise((resolve, reject) => {
+        accounts.insert(data, (err, newDoc) => {
+            if (err) {
+                reject(err);
+            } else {
+                newDoc.id = newDoc._id;
+                delete newDoc._id;
+                resolve(newDoc);
+            }
+        });
+    });
+}
+
 module.exports = {
     init,
     createInvoice,
@@ -159,5 +204,7 @@ module.exports = {
     getInvoiceById,
     createUser,
     getUserById,
-    createTransaction
+    createTransaction,
+    getBankAccountsByUserId,
+    createBankAccount
 };

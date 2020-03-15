@@ -12,6 +12,7 @@ const server = app
         res.set('Access-Control-Allow-Methods', '*');
         next();
     })
+    .get('/profile', checkSession, require('./api/get_profile'))
     .get('/invoices', checkSession, require('./api/get_invoices'))
     .post('/invoices', checkSession, require('./api/create_invoice'))
     .get('/public/invoice/:id', checkSession, require('./api/get_invoice_by_id'))
