@@ -15,5 +15,6 @@
 <style src="./fonts/font-awesome.min.css"></style>
 <style src="./fonts/line-awesome.min.css"></style>
 <style src="./fonts/fontawesome5-overrides.min.css"></style>
+<style src="./fonts/material-icons.min.css"></style>
 <style src="./css/CanitoFormularioCompra2.css"></style>
 <style src="./css/styles.css"></style>

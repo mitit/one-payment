@@ -21,17 +21,9 @@
                         class="fas fa-table" style="font-size: 35px;"></i><span
                         style="margin: 10px;">Transactions</span></a>
                 </li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="login.html"><i
-                        class="far fa-user-circle" style="font-size: 35px;"></i><span style="margin: 10px;">Login</span></a>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="support"><i
+                        class="fas fa-user-shield" style="font-size: 35px;"></i><span style="margin: 10px;">Support</span></a>
                 </li>
-                <li class="nav-item d-flex justify-content-center" role="presentation"><a class="nav-link"
-                                                                                          href="register.html"><i
-                        class="fas fa-user-circle" style="font-size: 35px;"></i><span class="d-inline-flex"
-                                                                                      style="margin: 10px;">Register</span></a>
-                </li>
-                <li class="nav-item" role="presentation"></li>
-                <li class="nav-item" role="presentation"></li>
-                <li class="nav-item" role="presentation"></li>
             </ul>
             <div class="text-center d-none d-md-inline">
                 <button @click="toggle" class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
