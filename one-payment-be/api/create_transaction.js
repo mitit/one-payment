@@ -3,6 +3,7 @@ const {getInvoiceById, createTransaction} = require('./database.service');
 module.exports = async function (req, res, next) {
     const invoiceId = req.params.id;
     const body = req.body || {};
+    body.amount = parseFloat(body.amount);
 
     if (!invoiceId) {
         res.status(400).json({error: 'No invoice id'});
