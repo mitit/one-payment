@@ -24,4 +24,5 @@ hs_err_pid*
 
 node_modules
 **/db/invoices.txt
+**/db/transactions.txt
 one-payment-be/.idea
