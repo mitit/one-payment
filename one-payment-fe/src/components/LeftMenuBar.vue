@@ -1,5 +1,5 @@
 <template>
-    <nav ref="leftMenuBar"
+    <nav ref="leftMenuBar" id="leftMenuBar"
          class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-success p-0">
         <div class="container-fluid d-flex flex-column p-0">
             <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
@@ -22,7 +22,8 @@
                         style="margin: 10px;">Transactions</span></a>
                 </li>
                 <li class="nav-item" role="presentation"><a class="nav-link" href="support"><i
-                        class="fas fa-user-shield" style="font-size: 35px;"></i><span style="margin: 10px;">Support</span></a>
+                        class="fas fa-user-shield" style="font-size: 35px;"></i><span
+                        style="margin: 10px;">Support</span></a>
                 </li>
             </ul>
             <div class="text-center d-none d-md-inline">

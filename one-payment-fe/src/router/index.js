@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import AccountInfo from '@/components/AccountInfo'
 import CreatePayment from '@/components/CreatePayment'
 import GeneratedQr from '@/components/GeneratedQr'
+import Payment from '@/components/Payment'
 
 Vue.use(Router)
 
@@ -25,6 +26,12 @@ export default new Router({
       path: '/created-payment',
       name: 'GeneratedQr',
       component: GeneratedQr
+    },
+
+    {
+      path: '/payment',
+      name: 'Payment',
+      component: Payment
     }
   ]
 })

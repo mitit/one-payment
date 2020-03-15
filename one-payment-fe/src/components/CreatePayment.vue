@@ -3,18 +3,7 @@
         <left-menu-bar></left-menu-bar>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            <li class="nav-item no-arrow mx-1" role="presentation">
-                                <div class="nav-item no-arrow"><a class="nav-link" aria-expanded="false" href="settings"><i class="material-icons fa-fw">settings</i></a>
-                                    
-                                </div>
-                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                <page-header></page-header>
                 <div class="container-fluid">
                     <h3 class="text-dark mb-1">Create QR</h3>
                 </div>
@@ -65,12 +54,14 @@
 
 <script>
   import LeftMenuBar from '@/components/LeftMenuBar';
+  import PageHeader from '@/components/Header';
 
   export default {
     name: 'CreatePayment',
 
     components: {
-      LeftMenuBar
+      LeftMenuBar,
+      PageHeader
     }
   }
 </script>
