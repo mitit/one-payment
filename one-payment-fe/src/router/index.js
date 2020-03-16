@@ -11,7 +11,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/account',
+      path: '/',
       name: 'AccountInfo',
       component: AccountInfo
     },

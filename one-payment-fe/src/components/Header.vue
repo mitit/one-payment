@@ -6,7 +6,7 @@
             <ul class="nav navbar-nav flex-nowrap ml-auto">
                 <li class="nav-item no-arrow mx-1" role="presentation">
                     <div class="nav-item no-arrow"><a class="nav-link" aria-expanded="false"
-                                                      href="settings"><i class="material-icons fa-fw">settings</i></a>
+                    ><i class="material-icons fa-fw">settings</i></a>
 
                     </div>
                     <div class="shadow dropdown-list dropdown-menu dropdown-menu-right"
